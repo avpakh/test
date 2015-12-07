@@ -1,0 +1,6 @@
+﻿select  a.phone ,sum (b.status) as selled, (count (b.status) -sum (b.status)) as new   from phones a , items b 
+where 
+      b.user_id = ANY (a.users) and b.status=1 or b.user_id = ANY (a.users) and b.status=0
+
+group by a.phone
+order by a.phone
